@@ -20,33 +20,27 @@ public class Question9 {
         int mark;
         int maxMark = 100;
         int minMark = 0;
+        int passMark = 10;
+        int passes = 0;
+        int fails = 0;
+        int student = 1;
+        int numOfStudents = 3;
 
+        do {
             mark = Integer.parseInt(JOptionPane.showInputDialog("Please enter a mark: "));
 
             while (mark < minMark || mark > maxMark) {
-                mark = Integer.parseInt(JOptionPane.showInputDialog("Please enter a valid mark between "+minMark+" and "+maxMark+"."));
+                mark = Integer.parseInt(JOptionPane.showInputDialog("Please enter a valid mark between " + minMark + " and " + maxMark + "."));
             }
-
-            // Once mark has been validated, pass the mark to the getGrade method to decide if it is a pass or fail
-            getGrade(mark);
-    }
-
-    // Method accepts mark passed from getMark method and loops through number of students to determine no. of passes and fails.
-    public static void getGrade(int aMark) {
-        int student = 1;
-        int passes = 0;
-        int fails = 0;
-        int passMark = 10;
-        int numOfStudents = 3;
-
-        while (student <= numOfStudents) {
-            if (aMark >= passMark) {
+            if (mark >= passMark) {
                 passes++;
             } else {
                 fails++;
             }
+            //increment counter
             student++;
-        }
+        } while(student <= numOfStudents);
+
 
         // Number of passes and fails passed to the outputMessage method to display no. of passes and fails.
         outputMessage(passes, fails);
